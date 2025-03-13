@@ -3,9 +3,9 @@ import TaskItem from "./TaskItem"
 import type { Task } from "./util/types"
 
 type TaskListProps = {
-    tasks: Task[],
-    onToggle: (id: string) => void,
-    onDelete: (id: string) => void
+    tasks: Task[]
+    onToggle: (id: string) => void
+    onDelete: (task: Task) => void
 }
 
 const TaskList = ({ tasks, onToggle, onDelete }: TaskListProps) => {
@@ -14,7 +14,7 @@ const TaskList = ({ tasks, onToggle, onDelete }: TaskListProps) => {
             data={tasks}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-                <TaskItem task={item} onToggle={() => onToggle(item.id)} onDelete={() => onDelete(item.id)} />
+                <TaskItem task={item} onToggle={() => onToggle(item.id)} onDelete={() => onDelete(item)} />
             )}
             className="flex-1"
             contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 8 }}
@@ -22,4 +22,4 @@ const TaskList = ({ tasks, onToggle, onDelete }: TaskListProps) => {
     )
 }
 
-export default TaskList;
+export default TaskList
