@@ -1,5 +1,7 @@
 # **Ryan's Task Manager**
 
+<img width="386" alt="Screenshot 2025-03-13 at 12 40 06 AM" src="https://github.com/user-attachments/assets/92baa21f-e447-4a4f-8894-81642504e674" />
+
 ## **Setup Instructions**
 This project was built using a **TailwindCSS template** for React Native found here: https://github.com/aiherrera/react-expo-template
 
