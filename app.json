@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "Ryan's Task Manager",
+    "slug": "ryans-task-manager",
     "version": "1.0.0",
 
     "web": {

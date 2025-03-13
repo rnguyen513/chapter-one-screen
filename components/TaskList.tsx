@@ -17,9 +17,10 @@ const TaskList = ({ tasks, onToggle, onDelete }: TaskListProps) => {
                 <TaskItem task={item} onToggle={() => onToggle(item.id)} onDelete={() => onDelete(item)} />
             )}
             className="flex-1"
-            contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 8 }}
+            contentContainerClassName="px-4 py-2"
+            contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 8 }}
         />
     )
 }
 
-export default TaskList
+export default TaskList;
