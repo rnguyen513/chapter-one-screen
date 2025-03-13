@@ -1,25 +1,52 @@
-import { Text, View } from 'react-native';
+import { useState } from "react"
+import { View, Text, SafeAreaView, StatusBar, KeyboardAvoidingView, Platform } from "react-native"
+import TaskList from "./TaskList"
+import AddTask from "./AddTask"
+import EmptyState from "./EmptyState"
+import type { Task } from "./util/types"
 
-import { EditScreenInfo } from './EditScreenInfo';
+const ScreenContent = () => {
+	const [tasks, setTasks] = useState<Task[]>([])
 
-type ScreenContentProps = {
-  title: string;
-  path: string;
-  children?: React.ReactNode;
-};
+	const addTask = (text: string, description?: string) => {
+		if (text.trim().length === 0) return
 
-export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
-  return (
-    <View className={styles.container}>
-      <Text className={styles.title}>{title}</Text>
-      <View className={styles.separator} />
-      <EditScreenInfo path={path} />
-      {children}
-    </View>
-  );
-};
-const styles = {
-  container: `items-center flex-1 justify-center`,
-  separator: `h-[1px] my-7 w-4/5 bg-gray-200`,
-  title: `text-xl font-bold`,
-};
+		const newTask: Task = {
+			id: Date.now().toString(),
+			title: text.trim(),
+			description: description,
+			completed: false,
+		}
+
+		setTasks([...tasks, newTask])
+	}
+
+	const toggleTask = (id: string) => {
+		setTasks(tasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)))
+	}
+
+	const deleteTask = (id: string) => {
+		setTasks(tasks.filter((task) => task.id !== id))
+	}
+
+	return (
+		<SafeAreaView className="flex-1 bg-gray-100">
+			<StatusBar barStyle="dark-content" />
+			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} className="flex-1">
+				<View className="p-5 pb-2.5">
+					<Text className="text-3xl font-bold text-gray-800">Task Manager</Text>
+					<Text className="text-base text-gray-600 mt-1">
+						{tasks.length} task{tasks.length !== 1 ? "s" : ""}
+						{tasks.filter((t) => t.completed).length > 0 && ` (${tasks.filter((t) => t.completed).length} completed)`}
+					</Text>
+				</View>
+
+				{tasks.length > 0 ? <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} /> : <EmptyState />}
+
+				<AddTask onAddTask={addTask} />
+			</KeyboardAvoidingView>
+		</SafeAreaView>
+	)
+}
+
+export default ScreenContent;
