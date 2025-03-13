@@ -11,7 +11,7 @@ type TaskItemProps = {
 }
 
 const TaskItem = ({ task, onToggle, onDelete }: TaskItemProps) => {
-    const [expanded, setExpanded] = useState(false)
+    const [expanded, setExpanded] = useState(true)
 
     const toggleExpanded = () => {
         if (task.description) {
@@ -42,6 +42,9 @@ const TaskItem = ({ task, onToggle, onDelete }: TaskItemProps) => {
                         }}
                     >
                         {task.title}
+                    </Text>
+                    <Text className="text-gray-400 italic text-xs">
+                        Added on: {(new Date(parseInt(task.id))).toLocaleDateString()}
                     </Text>
                 </TouchableOpacity>
 
