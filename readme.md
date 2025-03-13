@@ -1,5 +1,6 @@
 # **Ryan's Task Manager**
 
+<img width="1480" alt="Screenshot 2025-03-13 at 12 43 02 AM" src="https://github.com/user-attachments/assets/1d3758b7-c434-47cc-986a-94b4ff00260a" />
 <img width="386" alt="Screenshot 2025-03-13 at 12 40 06 AM" src="https://github.com/user-attachments/assets/92baa21f-e447-4a4f-8894-81642504e674" />
 
 ## **Setup Instructions**
